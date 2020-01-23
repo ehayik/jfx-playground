@@ -17,5 +17,5 @@ In order to run the application you must have JDK 8 installed on your local mach
 
 When you have JDK 8 installed you need to perform the following steps on the command line:
 
-1. ./mvnw clean install
-2. ./mvnw spring-boot:run
+1. `./mvnw clean install`
+2. `./mvnw spring-boot:run`
