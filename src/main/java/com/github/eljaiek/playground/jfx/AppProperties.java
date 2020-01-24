@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 public class AppProperties {
 
     private final String title;
-    private final String landingScene;
+    private final String indexView;
     private final int width;
     private final int height;
 }

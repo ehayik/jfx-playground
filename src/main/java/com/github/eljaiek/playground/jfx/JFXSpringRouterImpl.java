@@ -24,7 +24,7 @@ final class JFXSpringRouterImpl implements ApplicationListener<StageReadyEvent>,
     @Override
     @SneakyThrows
     public void onApplicationEvent(StageReadyEvent event) {
-        val parent = loadFXML(appProperties.getLandingScene());
+        val parent = loadFXML(appProperties.getIndexView());
         val stage = event.getStage();
         stage.setTitle(appProperties.getTitle());
         scene = new Scene(parent, appProperties.getWidth(), appProperties.getHeight());
