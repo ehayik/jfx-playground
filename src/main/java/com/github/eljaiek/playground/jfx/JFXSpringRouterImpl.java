@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-final class JFXApplicationInitializer implements ApplicationListener<StageReadyEvent>, SceneRootExchanger {
+final class JFXSpringRouterImpl implements ApplicationListener<StageReadyEvent>, Router {
 
    private final AppProperties appProperties;
    private final ApplicationContext applicationContext;
@@ -33,22 +33,22 @@ final class JFXApplicationInitializer implements ApplicationListener<StageReadyE
     }
 
     private Parent loadFXML(String fxml) throws IOException {
-        val fxmlLoader = new FXMLLoader(JFXApplicationInitializer.class.getResource(fxml + ".fxml"));
+        val fxmlLoader = new FXMLLoader(JFXSpringRouterImpl.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         return fxmlLoader.load();
     }
 
     @Override
-    public void exchange(String parentName) {
+    public void navigateByUrl(String url) {
 
         if (scene == null) {
             throw new IllegalArgumentException("Current scene is not ready yet");
         }
 
         try {
-            scene.setRoot(loadFXML(parentName));
+            scene.setRoot(loadFXML(url));
         } catch (IOException ex) {
-            String msg = String.format("It isn't possible to set %s as Root", parentName);
+            String msg = String.format("It isn't possible to set %s as Root", url);
             throw new IllegalArgumentException(msg, ex);
         }
     }

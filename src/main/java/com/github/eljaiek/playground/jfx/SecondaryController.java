@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 public class SecondaryController {
 
-    private final SceneRootExchanger sceneRootExchanger;
+    private final Router router;
 
     @FXML
     private void switchToPrimary() {
-        sceneRootExchanger.exchange("/primary");
+        router.navigateByUrl("/primary");
     }
 }
