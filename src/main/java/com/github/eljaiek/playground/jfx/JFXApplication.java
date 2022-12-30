@@ -5,12 +5,12 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-@EnableConfigurationProperties(AppProperties.class)
+@ConfigurationPropertiesScan
 public class JFXApplication extends Application {
 
     private ConfigurableApplicationContext applicationContext;

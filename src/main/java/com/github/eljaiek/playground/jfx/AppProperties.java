@@ -8,9 +8,8 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 @ConfigurationProperties("app")
 public class AppProperties {
-
-    private final String title;
-    private final String indexView;
-    private final int width;
-    private final int height;
+    String title;
+    String indexView;
+    int width;
+    int height;
 }
