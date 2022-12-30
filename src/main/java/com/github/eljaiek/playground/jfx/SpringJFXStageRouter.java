@@ -12,28 +12,31 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 @RequiredArgsConstructor
-final class JFXSpringRouterImpl implements ApplicationListener<StageReadyEvent>, Router {
+final class SpringJFXStageRouter implements ApplicationListener<StageReadyEvent>, JFXStageRouter {
 
    private final AppProperties appProperties;
    private final ApplicationContext applicationContext;
-   private Scene scene;
+   private final AtomicReference<Scene> sceneRef = new AtomicReference<>();
 
     @Override
     @SneakyThrows
     public void onApplicationEvent(StageReadyEvent event) {
         val parent = loadFXML(appProperties.getIndexView());
+        Scene scene = new Scene(parent, appProperties.getWidth(), appProperties.getHeight());
+        sceneRef.set(scene);
+
         val stage = event.getStage();
         stage.setTitle(appProperties.getTitle());
-        scene = new Scene(parent, appProperties.getWidth(), appProperties.getHeight());
         stage.setScene(scene);
         stage.show();
     }
 
     private Parent loadFXML(String fxml) throws IOException {
-        val fxmlLoader = new FXMLLoader(JFXSpringRouterImpl.class.getResource(fxml + ".fxml"));
+        val fxmlLoader = new FXMLLoader(SpringJFXStageRouter.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         return fxmlLoader.load();
     }
@@ -41,12 +44,12 @@ final class JFXSpringRouterImpl implements ApplicationListener<StageReadyEvent>,
     @Override
     public void navigateByUrl(String url) {
 
-        if (scene == null) {
+        if (sceneRef.get() == null) {
             throw new IllegalArgumentException("Current scene is not ready yet");
         }
 
         try {
-            scene.setRoot(loadFXML(url));
+            sceneRef.get().setRoot(loadFXML(url));
         } catch (IOException ex) {
             String msg = String.format("It isn't possible to set %s as Root", url);
             throw new IllegalArgumentException(msg, ex);

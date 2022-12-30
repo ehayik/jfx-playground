@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 public class SecondaryController {
 
-    private final Router router;
+    private final JFXStageRouter router;
 
     @FXML
     private void switchToPrimary() {
