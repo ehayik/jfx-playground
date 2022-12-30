@@ -3,7 +3,7 @@
 Demo project for integrating Spring Boot and JavaFX. The Demo has the following features:
 
 1. Simple working sample code for a small desktop application.
-2. Configuration for maven project to use JavaFX with Spring Boot, with the appropriate maven artifact 
+2. Configuration for maven or gradle project to use JavaFX with Spring Boot, with the appropriate maven artifact 
    dependencies for basic development.
 3. Uses recent, reasonably up-to-date JavaFX modules, with consistent versions 
    (which is something many beginners often don't do).
@@ -18,11 +18,11 @@ Demo project for integrating Spring Boot and JavaFX. The Demo has the following 
 The project uses the following technologies:
 
 - JavaFX 8
-- Spring Boot v2.2.4.RELEASE
+- Spring Boot v2.7.7
 
-## Prerequisites and getting started
+## Pre-requisites and getting started
 
 - Download and install Oracle JDK 8 (which includes all JavaFX modules).
-- Open the command line and navigate to the project folder, then run the following commands:
-    1. `./mvnw clean verify`
-    2. `./mvnw spring-boot:run`
+- Open the command line and navigate to the project folder.
+- To run using maven use `./mvnw spring-boot:run` command.
+- To run using gradle use `./gradlew bootRun` command.
