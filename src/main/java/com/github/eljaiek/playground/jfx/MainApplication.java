@@ -11,17 +11,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public class JFXApplication extends Application {
+public class MainApplication extends Application {
 
     private ConfigurableApplicationContext applicationContext;
 
     public static void main(String[] args) {
-        Application.launch(JFXApplication.class, args);
+        Application.launch(MainApplication.class, args);
     }
 
     @Override
     public void init() {
-        applicationContext = new SpringApplicationBuilder(JFXApplication.class).run();
+        applicationContext = new SpringApplicationBuilder(MainApplication.class).run();
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.github.eljaiek.playground.jfx;
 
-import com.github.eljaiek.playground.jfx.JFXApplication.StageReadyEvent;
+import com.github.eljaiek.playground.jfx.MainApplication.StageReadyEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
