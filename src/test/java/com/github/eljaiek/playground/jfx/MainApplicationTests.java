@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MainApplicationTests {
 
 	@Autowired(required = false)
-	JFXStageRouter router;
+    StageRouter router;
 
 	@Test
 	void givenApplicationContextIsLoadedThenRouterShouldNotBeNull() {

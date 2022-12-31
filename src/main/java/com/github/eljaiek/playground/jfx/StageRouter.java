@@ -1,6 +1,6 @@
 package com.github.eljaiek.playground.jfx;
 
-public interface JFXStageRouter {
+public interface StageRouter {
 
     void navigateByUrl(String url);
 }

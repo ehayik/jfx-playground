@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 @RequiredArgsConstructor
-final class SpringJFXStageRouter implements ApplicationListener<StageReadyEvent>, JFXStageRouter {
+final class PrimaryStageInitializer implements ApplicationListener<StageReadyEvent>, StageRouter {
 
    private final AppProperties appProperties;
    private final ApplicationContext applicationContext;
@@ -36,7 +36,7 @@ final class SpringJFXStageRouter implements ApplicationListener<StageReadyEvent>
     }
 
     private Parent loadFXML(String fxml) throws IOException {
-        val fxmlLoader = new FXMLLoader(SpringJFXStageRouter.class.getResource(fxml + ".fxml"));
+        val fxmlLoader = new FXMLLoader(PrimaryStageInitializer.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         return fxmlLoader.load();
     }
