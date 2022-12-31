@@ -1,12 +1,23 @@
+//file:noinspection GradlePackageUpdate
 plugins {
     id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.springframework.boot' version '2.7.7'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'com.github.eljaiek.playground'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+bootJar {
+    launchScript()
+}
 
 configurations {
     compileOnly {
@@ -25,8 +36,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-bootJar {
-    launchScript()
+javafx {
+    version = '11.0.2'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 tasks.named('test') {

@@ -1,6 +1,5 @@
 package com.github.eljaiek.playground.jfx;
 
-import com.github.eljaiek.playground.jfx.MainApplication.StageReadyEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
+
+import static com.github.eljaiek.playground.jfx.JavaFxApplication.*;
 
 @Component
 @RequiredArgsConstructor

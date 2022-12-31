@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class MainApplicationTests {
 
-	@Autowired(required = false)
-    StageRouter router;
+    @Autowired(required = false)
+    StageRouter stageRouter;
 
-	@Test
-	void givenApplicationContextIsLoadedThenRouterShouldNotBeNull() {
-		assertThat(router).isNotNull();
-	}
+    @Test
+    void givenApplicationContextIsLoadedThenRouterShouldNotBeNull() {
+        assertThat(stageRouter).isNotNull();
+    }
 }
