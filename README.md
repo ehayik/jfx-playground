@@ -16,14 +16,14 @@ Demo project for integrating _Spring Boot_ and _JavaFX_. The Demo has the follow
 
 The project uses the following technologies:
 
-- JavaFX 11
-- Spring Boot v2.7.7
+- JavaFX 17
+- Spring Boot v3.0.1
 
 ## Developer Guide
 
 ### Prerequisites 
 
-- Download and install JDK 11.
+- Download and install JDK 17.
 
 ### How to run?
 
