@@ -26,12 +26,12 @@ final class PrimaryStageInitializer implements ApplicationListener<StageReadyEve
     @Override
     @SneakyThrows
     public void onApplicationEvent(StageReadyEvent event) {
-        val parent = loadFXML(appProperties.getIndexView());
-        Scene scene = new Scene(parent, appProperties.getWidth(), appProperties.getHeight());
+        val parent = loadFXML(appProperties.indexView());
+        Scene scene = new Scene(parent, appProperties.width(), appProperties.height());
         sceneRef.set(scene);
 
         val stage = event.getStage();
-        stage.setTitle(appProperties.getTitle());
+        stage.setTitle(appProperties.title());
         stage.setScene(scene);
         stage.show();
     }
@@ -52,8 +52,7 @@ final class PrimaryStageInitializer implements ApplicationListener<StageReadyEve
         try {
             sceneRef.get().setRoot(loadFXML(url));
         } catch (IOException ex) {
-            String msg = String.format("It isn't possible to set %s as Root", url);
-            throw new IllegalArgumentException(msg, ex);
+            throw new IllegalArgumentException("It isn't possible to set %s as Root".formatted(url), ex);
         }
     }
 }
