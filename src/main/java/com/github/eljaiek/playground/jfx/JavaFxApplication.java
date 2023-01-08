@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+import static org.springframework.boot.WebApplicationType.NONE;
+
 public class JavaFxApplication extends Application {
 
     private ConfigurableApplicationContext applicationContext;
@@ -17,6 +19,7 @@ public class JavaFxApplication extends Application {
     @Override
     public void init() {
         applicationContext = new SpringApplicationBuilder()
+                .web(NONE)
                 .sources(MainApplication.class)
                 .initializers(newApplicationContextInitializer(this))
                 .run(getParameters().getRaw().toArray(new String[0]));
