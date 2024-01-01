@@ -9,6 +9,7 @@ import lombok.val;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
@@ -21,14 +22,13 @@ final class PrimaryStageInitializer implements ApplicationListener<StageReadyEve
 
    private final AppProperties appProperties;
    private final ApplicationContext applicationContext;
-   private final AtomicReference<Scene> sceneRef = new AtomicReference<>();
+   private Scene scene;
 
     @Override
     @SneakyThrows
     public void onApplicationEvent(StageReadyEvent event) {
         val parent = loadFXML(appProperties.indexView());
-        Scene scene = new Scene(parent, appProperties.width(), appProperties.height());
-        sceneRef.set(scene);
+        scene = new Scene(parent, appProperties.width(), appProperties.height());
 
         val stage = event.getStage();
         stage.setTitle(appProperties.title());
@@ -37,20 +37,23 @@ final class PrimaryStageInitializer implements ApplicationListener<StageReadyEve
     }
 
     private Parent loadFXML(String fxml) throws IOException {
-        val fxmlLoader = new FXMLLoader(PrimaryStageInitializer.class.getResource(fxml + ".fxml"));
+        var resource = PrimaryStageInitializer.class.getResource(fxml + ".fxml");
+
+        if (resource == null) {
+            throw new IOException("Failed to find FXML resource " + fxml);
+        }
+
+        val fxmlLoader = new FXMLLoader(resource);
         fxmlLoader.setControllerFactory(applicationContext::getBean);
         return fxmlLoader.load();
     }
 
     @Override
     public void navigateByUrl(String url) {
-
-        if (sceneRef.get() == null) {
-            throw new IllegalArgumentException("Current scene is not ready yet");
-        }
+        Assert.notNull(scene, "Current scene is not ready yet");
 
         try {
-            sceneRef.get().setRoot(loadFXML(url));
+            scene.setRoot(loadFXML(url));
         } catch (IOException ex) {
             throw new IllegalArgumentException("It isn't possible to set %s as Root".formatted(url), ex);
         }
