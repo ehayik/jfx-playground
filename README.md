@@ -1,5 +1,7 @@
 # jfx-playground
 
+## Description
+
 Demo project for integrating _Spring Boot_ and _JavaFX_. The Demo has the following features:
 
 1. Simple working sample code for a small desktop application.
@@ -12,21 +14,30 @@ Demo project for integrating _Spring Boot_ and _JavaFX_. The Demo has the follow
 7. Demonstrates how to use _Spring Boot_ features within _JavaFX_.
 8. Showcase how to navigate between _JavaFX_ view using a router implementation, heavily inspired on Angular/Router.
 
-## Which technologies are being used ?
+## Technologies Used
 
 The project uses the following technologies:
 
-- JavaFX 21
-- Spring Boot v3.2.0
+- **Java JDK 21**: The latest version of Java Development Kit is used for implementing the application logic.
+- **JavaFX 21**: A software platform for creating and delivering desktop applications.
+- **Spring Boot v3.2.0**: An open source Java-based framework used to create a Micro Service. It is developed by Pivotal Team.
 
-## Developer Guide
+## Getting Started
 
 ### Prerequisites 
 
-- Download and install JDK 21.
+- Java JDK version 21.
+- An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
+- Maven or Gradle
 
-### How to run?
+### Installing
+
+1. Clone the repository `git clone git@github.com:ehayik/jfx-playground.git`
+2. Open the project folder.
+3. Run `mvn clean compile` to install the necessary dependencies from the POM file.
+
+### Running locally
 
 - Open the command line and navigate to the project folder.
-- To run using maven use `./mvnw spring-boot:run` command.
-- To run using gradle use `./gradlew bootRun` command.
+- To run with maven use `./mvnw spring-boot:run` command.
+- To run with gradle use `./gradlew bootRun` command.
