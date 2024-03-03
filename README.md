@@ -24,7 +24,7 @@ The project uses the following technologies:
 
 ## Getting Started
 
-### Prerequisites z
+### Prerequisites
 
 - Java JDK version 21.
 - An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
