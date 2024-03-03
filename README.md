@@ -1,4 +1,4 @@
-# jfx-playground
+# JFX Playground
 
 ## Description
 
@@ -24,7 +24,7 @@ The project uses the following technologies:
 
 ## Getting Started
 
-### Prerequisites 
+### Prerequisites z
 
 - Java JDK version 21.
 - An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
@@ -34,7 +34,7 @@ The project uses the following technologies:
 
 1. Clone the repository `git clone git@github.com:ehayik/jfx-playground.git`
 2. Open the project folder.
-3. Run `mvn clean compile` to install the necessary dependencies from the POM file.
+3. Run `./mvnw compile` to install the necessary dependencies from the POM file.
 
 ### Running locally
 
